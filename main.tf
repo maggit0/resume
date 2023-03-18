@@ -5,7 +5,6 @@ module "s3_bucket" {
 
 module "cloudfront_distribution" {
   source = "git::https://github.com/maggit0/resume.git//modules/cloudfront_distribution"
-  domain_name = var.domain_name
   bucket_name = module.s3_bucket.bucket_id
 }
 
