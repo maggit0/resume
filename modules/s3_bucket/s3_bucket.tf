@@ -1,0 +1,34 @@
+resource "aws_s3_bucket" "resume_bucket" {
+    bucket = var.bucket_name
+
+    acl = private
+
+    versioning {
+      enabled = true
+    }
+
+    tags = {
+        name = "resume_bucket"
+    }
+}
+
+resource "aws_s3_bucket_public_access_block" "public_access_block" {
+    bucket = aws_s3_bucket.resume_bucket.id
+
+    block_public_acls = true
+    block_public_policy = true
+    ignore_public_acls = true
+    restrict_public_buckets = true
+}
+
+output "s3_bucket_id" {
+    value = aws_s3_bucket.resume_bucket.id
+}
+
+output "s3_bucket_arn" {
+    value = aws_s3_bucket.resume_bucket.arn
+}
+
+output "s3_bucket_region" {
+    value = aws_s3_bucket.resume_bucket.region
+}
