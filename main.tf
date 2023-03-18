@@ -11,5 +11,6 @@ module "cloudfront_distribution" {
 module "route53_record" {
   source = "git::https://github.com/maggit0/resume.git//modules/route53_record"
   domain_name = var.domain_name
-  cloudfront_url = module.cloudfront_distribution.distribution_domain_name
+  zone_id = var.zone_id
+  ttl = var.ttl
 }
