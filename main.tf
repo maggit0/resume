@@ -5,7 +5,6 @@ module "s3_bucket" {
 
 module "cloudfront_distribution" {
   source = "git::https://github.com/maggit0/resume.git//modules/cloudfront_distribution"
-  bucket_name = module.s3_bucket.bucket_id
 }
 
 module "route53_record" {
