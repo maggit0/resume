@@ -1,5 +1,8 @@
+module "s3_bucket" {
+  source = "github.com/maggit0/resume//modules/s3_bucket"
+}
 resource "aws_cloudfront_distribution" "resume_distribution" {
-    depends_on = [module.s3_bucket]
+    depends_on = module.s3_bucket
 
     origin {
         domain_name = module.s3_bucket.bucket_name
