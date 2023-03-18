@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "resume_bucket" {
-    bucket = var.bucket_name
+    bucket = var.bucket_name.resume_bucket.id
     acl = "private"
     versioning {
       enabled = true
