@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "resume_bucket" {
-    bucket = var.bucket_name.resume_bucket.id
+    bucket = var.bucket_name
     acl = "private"
     versioning {
       enabled = true
@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "resume_bucket" {
 }
 
 resource "aws_s3_bucket_public_access_block" "public_access_block" {
-    bucket = aws_s3_bucket.resume_bucket.id
+    bucket = aws_s3_bucket.resume_bucket.bucket
 
     block_public_acls = true
     block_public_policy = true
