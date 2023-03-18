@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "resume_bucket" {
     bucket = var.bucket_name
 }    
-resource "aws_s3_bucket_acl" "example_bucket_acl" {
+resource "aws_s3_bucket_acl" "resume_bucket_acl" {
     bucket = var.bucket_name   
-    acl = "private"
+    acl = "public-read"
     versioning {
       enabled = true
     }
