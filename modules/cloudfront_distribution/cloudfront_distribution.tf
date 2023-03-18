@@ -36,26 +36,26 @@ resource "aws_cloudfront_distribution" "resume_distribution" {
     max_ttl = 86400
 }
 
-price_class = var.cf_price_class
+    price_class = var.cf_price_class
 
-restrictions {
-    geo_restriction {
-      restriction_type = "whitelist"
-      locations = ["CN", "RU"]
+    restrictions {
+        geo_restriction {
+        restriction_type = "whitelist"
+        locations = ["CN", "RU"]
     }
 }
 
-viewer_certificate {
-    acm_certificate_arn = var.cf_acm_certificate_arn
-    ssl_support_method = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2019"
-    certificate_source = "acm"
-    cloudfront_default_certificate = false
+    viewer_certificate {
+        acm_certificate_arn = var.cf_acm_certificate_arn
+        ssl_support_method = "sni-only"
+        minimum_protocol_version = "TLSv1.2_2019"
+        certificate_source = "acm"
+        cloudfront_default_certificate = false
 }
 
-logging_config {
-    bucket = aws_s3_bucket.log_bucket.bucket_domain_name
-    include_cookies = false
-    prefix = "access-logs/"
+    logging_config {
+        bucket = aws_s3_bucket.log_bucket.bucket_domain_name
+        include_cookies = false
+        prefix = "access-logs/"
     }
 }
